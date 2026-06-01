@@ -216,8 +216,8 @@ const projectsData = {
             "Response Optimization: Programmed conversational response handling interfaces to guarantee real-time outputs."
         ],
         tech: ["TypeScript", "AI / Chatbot", "Natural Language Processing", "API Systems"],
-        github: "https://github.com/venuchalla2006-cmd",
-        live: "https://ncert-ai-bot.vercel.app"
+        github: "https://github.com/venuchalla2006-cmd/NCERT-AI-CHAT-BOT",
+        live: null
     },
     "2": {
         title: "Employee Salary Prediction",
@@ -229,8 +229,8 @@ const projectsData = {
             "Prediction Accuracy: Rigorous model evaluations yielding a high predictive score of 94.2% on testing datasets partitions."
         ],
         tech: ["Python Scripting", "Machine Learning", "Data Preprocessing", "Supervised Regression Models"],
-        github: "https://github.com/venuchalla2006-cmd",
-        live: "https://salary-predictor-ml.streamlit.app"
+        github: "https://github.com/venuchalla2006-cmd/Employee_salary_prediction",
+        live: null
     },
     "3": {
         title: "Weather Forecast Application",
@@ -242,8 +242,8 @@ const projectsData = {
             "Responsive Web layouts: Pure CSS variable structures formatting weather cards dynamically."
         ],
         tech: ["JavaScript (ES6+)", "REST API Fetch", "JSON Parsing", "HTML5 & CSS3"],
-        github: "https://github.com/venuchalla2006-cmd",
-        live: "https://weather-api-venu.vercel.app"
+        github: "https://github.com/venuchalla2006-cmd/Weather_Forecast",
+        live: null
     }
 };
 
@@ -291,7 +291,18 @@ function initModals() {
                 const liveLink = document.getElementById('modal-live-link');
                 
                 if (githubLink) githubLink.href = data.github;
-                if (liveLink) liveLink.href = data.live;
+                if (liveLink) {
+                    if (data.live) {
+                        liveLink.href = data.live;
+                        liveLink.innerHTML = `<i class="fa-solid fa-arrow-up-right-from-square"></i> <span>Live Demo</span>`;
+                        liveLink.style.display = 'inline-flex';
+                    } else {
+                        // Point to GitHub repository README since no live site is available
+                        liveLink.href = data.github;
+                        liveLink.innerHTML = `<i class="fa-brands fa-github"></i> <span>View Repository</span>`;
+                        liveLink.style.display = 'inline-flex';
+                    }
+                }
                 
                 openModal(projectModal);
             }
